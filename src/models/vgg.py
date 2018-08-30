@@ -1,3 +1,4 @@
+import keras
 from keras.models import Sequential, Model
 from keras.layers import Conv2D, MaxPool2D, Input, BatchNormalization, Flatten, Dropout, Dense
 from keras.layers.core import Dense
@@ -32,6 +33,6 @@ def smallvgg(w, h, depth=3, classes=14):
     x = Dropout(0.25)(x)
     x = Dense(classes, activation='sigmoid')(x)
     model = Model(inp, x)
-    model.compile(Adam(1e-3), loss='binary_crossentropy', metrics=['accuracy',])
+    model.compile(Adam(1e-3), loss=K.binary_crossentropy, metrics=[keras.metrics.binary_accuracy,])
     return model
 

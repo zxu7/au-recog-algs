@@ -104,7 +104,7 @@ class ManifestIterator(Iterator):
         # self.num_classes = len(classes)
         # self.class_indices = dict(zip(classes, range(len(classes))))
 
-        # TODO: assert manifest files all exist
+        # TODO: assert train_manifest files all exist
         # pool = multiprocessing.pool.ThreadPool()
         # function_partial = partial(_count_valid_files_in_directory,
         #                            white_list_formats=white_list_formats,
@@ -177,7 +177,7 @@ class ManifestIterator(Iterator):
                     format=self.save_format)
                 img.save(os.path.join(self.save_to_dir, fname))
         # build batch of labels
-        batch_y = np.zeros(((len(index_array),) + self.labels.shape[1:]))
+        # batch_y = np.zeros(((len(index_array),) + self.labels.shape[1:]))
 
         return batch_x, batch_y
 
