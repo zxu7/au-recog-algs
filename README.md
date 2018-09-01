@@ -1,9 +1,20 @@
 # Action Unit Recognition (Under Development)
 
-### Requirements
+## Requirements
 keras >= 2.2.2
 
-### Data pipeline
+## Workflow
+### Train
+A nice machine learning workflow eases experimentation, readability, and reproducibility.
+In this repo, each training follows this workflow:
+1. initialize configs/params from base configurations `BaseConfig()` and `xxx.config`
+2. save `.config`, `info.txt`  to `experiments/`
+3. save model and model history to `experiments/`
+
+### Validation
+Describe how to reproduce result
+
+## Data pipelines
 This repo uses `ManifestGenerator` to load/process data. Example:
 
 ```
@@ -22,4 +33,4 @@ train_gen = train_manifest_gen.flow_from_manifest(manifest, get_filenames, get_l
 
 The `train_pain.py` is a working training script can successfully overfit the PAIN dataset. Check it out!
 
-### Models
+## Models
