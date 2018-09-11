@@ -4,6 +4,7 @@ from keras.layers import Conv2D, MaxPool2D, Input, BatchNormalization, Flatten, 
 from keras.layers.core import Dense
 from keras.optimizers import SGD, Adam
 from keras import backend as K
+from ..keras_utils import accuracy, f_beta, combo
 
 
 def smallvgg(w, h, depth=3, classes=14):
@@ -33,6 +34,6 @@ def smallvgg(w, h, depth=3, classes=14):
     x = Dropout(0.25)(x)
     x = Dense(classes, activation='sigmoid')(x)
     model = Model(inp, x)
-    model.compile(Adam(1e-3), loss=K.binary_crossentropy, metrics=[keras.metrics.binary_accuracy,])
+    model.compile(Adam(1e-3), loss=K.binary_crossentropy, metrics=[accuracy, f_beta, combo])
     return model
 
